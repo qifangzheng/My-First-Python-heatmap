@@ -1,0 +1,24 @@
+# Make an empty dataframe. This dataframe will be used to make the heatmap
+Carrier = ['AA', 'AS', 'DL', 'EV', 'MQ', 'NW', 'OH', 'OO', 'UA', 'US', 'XE', 'YV']  # List all carriers
+months = [1,2,3,4,5,6,7,8,9,10,11,12]
+df_heatmap = pd.DataFrame(columns=Carrier, index=months)
+
+# fill the heatmap dataframe with data from df_canceled_ord_2008_month_carrier 
+for i in range(0, len(df_canceled_ord_2008_month_carrier)):
+    month = df_canceled_ord_2008_month_carrier.iloc[i]['Month']
+    airline = df_canceled_ord_2008_month_carrier.iloc[i]['UniqueCarrier']
+    count = df_canceled_ord_2008_month_carrier.iloc[i]['Counts']
+    
+    df_heatmap.loc[month, airline] = count
+    
+# fill NaN value with 0
+df_heatmap = df_heatmap.fillna(0).astype(int)
+
+df_heatmap
+
+# plot the heatmap
+plt.figure(figsize = [15,10])
+ax = sb.heatmap(df_heatmap, annot = True, fmt = 'd', linewidths=.5, cmap="YlGnBu",cbar_kws={'label': 'Number of Canceled Flights'});
+plt.xlabel("Airlines");
+plt.ylabel("Month in 2008");
+plt.title("Figure 4: Canceled Flights Due To NAS Reason In 2008");
