@@ -23,3 +23,27 @@ plt.xlabel("Airlines");
 plt.ylabel("Month in 2008");
 plt.title("Figure 4: Canceled Flights Due To NAS Reason In 2008");
 # edit commit message from the previous commit
+
+# Add a subplot, there are still more work on the legend position
+# plot a multivariable line plot, left y-axis is flight volume, right y-axis is percetage of NAS cancellation
+fig = plt.figure(figsize = [10,5])
+dots = sb.load_dataset("dots").query("align == 'dots'")
+
+ax1 = fig.add_subplot(111) # Create matplotlib axes
+ax2 = ax1.twinx()           # Create another axes that shares the same 'YEAR' x-axis as ax1.
+
+# left y-axis: flight number
+sb.pointplot(data=df_ord_years, x='Year', y='TotalFlight', hue='UniqueCarrier', ax=ax1, palette=sb.color_palette("RdBu", 4))
+
+# right y-axis: % of NAS cancelation
+sb.pointplot(data=df_ord_years, x='Year', y='NAS(%)', hue='UniqueCarrier', linestyles='--', palette=sb.color_palette("RdBu", 4),ax=ax2,legend=False)
+
+# add labels and ticks etc
+plt.xticks(rotation=30)
+plt.title("Figure 9: ORD Flight Volumn and NAS Cancellation Trend from 2003 - 2008 (AA/MQ/OO/UA)");
+plt.xlabel("Year")
+ax1.set_ylabel("Number of Total Flights")
+ax2.set_ylabel('NAS Canellation (%)')
+ax1=plt.legend(loc=0,bbox_to_anchor=(0,0,1.6,0.7), title = "Solid lines (Total Flight), Dashed lines (% of NAS Cancellation)")
+plt.show();
+
