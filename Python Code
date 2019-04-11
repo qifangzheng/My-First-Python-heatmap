@@ -44,6 +44,7 @@ plt.title("Figure 9: ORD Flight Volumn and NAS Cancellation Trend from 2003 - 20
 plt.xlabel("Year")
 ax1.set_ylabel("Number of Total Flights")
 ax2.set_ylabel('NAS Canellation (%)')
-ax1=plt.legend(loc=0,bbox_to_anchor=(0,0,1.6,0.7), title = "Solid lines (Total Flight), Dashed lines (% of NAS Cancellation)")
+ax2=plt.legend(loc=0,bbox_to_anchor=(0,0,1.6,0.7), title = "Solid lines (Total Flight), Dashed lines (% of NAS Cancellation)")
+ax1.legend_.remove()
 plt.show();
 
