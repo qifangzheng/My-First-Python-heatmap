@@ -44,7 +44,16 @@ plt.title("Figure 9: ORD Flight Volumn and NAS Cancellation Trend from 2003 - 20
 plt.xlabel("Year")
 ax1.set_ylabel("Number of Total Flights")
 ax2.set_ylabel('NAS Canellation (%)')
-ax2=plt.legend(loc=0,bbox_to_anchor=(0,0,1.6,0.7), title = "Solid lines (Total Flight), Dashed lines (% of NAS Cancellation)")
-ax1.legend_.remove()
-plt.show();
 
+# add legend
+
+SolidHandles, SolidLabels = solid.get_legend_handles_labels()
+DashHandles, DashLabels = dash.get_legend_handles_labels()
+
+SolidLabels = ['AA Total Flights', 'MQ Total Flights', 'OO Total Flights', 'UA Total Flights']
+DashLabels = ['AA Cancellation', 'MQ Cancellation', 'OO Cancellation', 'UA Cancellation']
+
+SolidLegend = solid.legend(SolidHandles, SolidLabels, loc=0, bbox_to_anchor=(0,0,1.4,0.9), title ="Legend Total Flights")
+DashLegend = dash.legend(DashHandles, DashLabels, loc=0, bbox_to_anchor=(0,0,1.4,0.6), title = "Legend Cancellation")
+
+plt.show();
