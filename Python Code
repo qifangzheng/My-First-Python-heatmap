@@ -37,7 +37,6 @@ ax2 = ax1.twinx()           # Create another axes that shares the same 'YEAR' x-
 # right y-axis: % of NAS cancelation
 #dash = sb.pointplot(data=df_ord_years, x='Year', y='NAS(%)', hue='UniqueCarrier', linestyles ='--', palette=sb.color_palette("RdBu", 4),ax=ax2,legend=False)
 dash = sb.lineplot(data=df_ord_years, x='Year', y='NAS(%)', hue='UniqueCarrier', dashes=True, palette=sb.color_palette("RdBu", 4),ax=ax2,legend=False)
-#sb.lineplot(data=df_ord_years, x='Year', y='NAS(%)', hue='UniqueCarrier', dashes =True, palette=sb.color_palette("RdBu", 4),ax=ax2,legend=False)
 
 # add labels and ticks etc
 plt.xticks(rotation=30)
